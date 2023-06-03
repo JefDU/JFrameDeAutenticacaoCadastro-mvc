@@ -6,11 +6,11 @@ import controller.exception.RegraDeNegocioException;
 import controller.exception.UsuarioDaoException;
 import model.Usuario;
 
-public class LoginUsuarioController {
+public class LoginController {
 
 	 private UsuarioDao usuarioDao;
 
-	public LoginUsuarioController() {
+	public LoginController() {
 		usuarioDao = new UsuarioDaoImpl();
 	}
 

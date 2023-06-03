@@ -17,7 +17,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import controller.LoginUsuarioController;
+import controller.LoginController;
 import controller.exception.RegraDeNegocioException;
 
 public class FrameLoginInicial extends JFrame {
@@ -26,7 +26,7 @@ public class FrameLoginInicial extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtfUsuario;
 	private JPasswordField txtPassword;
-	private LoginUsuarioController loginControl;
+	private LoginController loginControl;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -43,7 +43,7 @@ public class FrameLoginInicial extends JFrame {
 
 	public FrameLoginInicial() {
 
-		loginControl = new LoginUsuarioController();
+		loginControl = new LoginController();
 
 		setResizable(false);
 		setTitle("Login");
