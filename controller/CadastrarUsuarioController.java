@@ -8,7 +8,7 @@ import model.Usuario;
 
 public class CadastrarUsuarioController {
 	
-	 UsuarioDao usuarioDao;
+	private UsuarioDao usuarioDao;
 	
 	public CadastrarUsuarioController() {
 		usuarioDao = new UsuarioDaoImpl();
@@ -26,7 +26,7 @@ public class CadastrarUsuarioController {
 				
 			}
 		} catch (UsuarioDaoException e) {
-			throw new RegraDeNegocioException("Falha técnica ao cadastrar: " + e.getMessage());
+			throw new RegraDeNegocioException(e.getMessage());
 		}
 		
 		if (user.getCpf().trim().equals("")) {
