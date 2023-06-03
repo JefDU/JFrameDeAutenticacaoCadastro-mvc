@@ -21,14 +21,14 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			Connection connection = UsuarioConnectionSql.connection();
 			String comandoSql = "Insert into usuario" + "(cpf, nome, login, senha) " + " values(?, ?, ?, ?)";
 
-			PreparedStatement pSql = connection.prepareStatement(comandoSql);
+			PreparedStatement ps = connection.prepareStatement(comandoSql);
 
-			pSql.setString(1, user.getCpf());
-			pSql.setString(2, user.getNome());
-			pSql.setString(3, user.getLogin());
-			pSql.setString(4, user.getSenha());
+			ps.setString(1, user.getCpf());
+			ps.setString(2, user.getNome());
+			ps.setString(3, user.getLogin());
+			ps.setString(4, user.getSenha());
 
-			pSql.execute();
+			ps.execute();
 
 			connection.close();
 
@@ -45,13 +45,13 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			Connection connection = UsuarioConnectionSql.connection();
 			String comandoSql = "Update usuario set login = ? where cpf = ? and nome = ?";
 
-			PreparedStatement pSql = connection.prepareStatement(comandoSql);
+			PreparedStatement ps = connection.prepareStatement(comandoSql);
 
-			pSql.setString(1, loginNovo);
-			pSql.setString(2, cpf);
-			pSql.setString(3, nome);
+			ps.setString(1, loginNovo);
+			ps.setString(2, cpf);
+			ps.setString(3, nome);
 
-			alterou = pSql.executeUpdate() > 0;
+			alterou = ps.executeUpdate() > 0;
 
 			connection.close();
 
@@ -69,14 +69,14 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			Connection connection = UsuarioConnectionSql.connection();
 			String comandoSql = "Update usuario set senha = ? where cpf = ? and nome = ? and login = ?";
 
-			PreparedStatement pSql = connection.prepareStatement(comandoSql);
+			PreparedStatement ps = connection.prepareStatement(comandoSql);
 
-			pSql.setString(1, senhaNova);
-			pSql.setString(2, cpf);
-			pSql.setString(3, nome);
-			pSql.setString(4, login);
+			ps.setString(1, senhaNova);
+			ps.setString(2, cpf);
+			ps.setString(3, nome);
+			ps.setString(4, login);
 
-			alterou = pSql.executeUpdate() > 0;
+			alterou = ps.executeUpdate() > 0;
 
 			connection.close();
 
@@ -95,11 +95,11 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			Connection connection = UsuarioConnectionSql.connection();
 			String comandoSql = "Select * from usuario where login = ? and senha = ?";
 
-			PreparedStatement psSql = connection.prepareStatement(comandoSql);
-			psSql.setString(1, login);
-			psSql.setString(2, senha);
+			PreparedStatement ps = connection.prepareStatement(comandoSql);
+			ps.setString(1, login);
+			ps.setString(2, senha);
 
-			ResultSet lista = psSql.executeQuery();
+			ResultSet lista = ps.executeQuery();
 
 			validar = lista.next();
 
@@ -122,8 +122,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			Connection connection = UsuarioConnectionSql.connection();
 			String comandoSql = "Select usuario.cpf, usuario.nome, usuario.login from usuario";
 
-			PreparedStatement psSql = connection.prepareStatement(comandoSql);
-			ResultSet lista = psSql.executeQuery();
+			PreparedStatement ps = connection.prepareStatement(comandoSql);
+			ResultSet lista = ps.executeQuery();
 
 			while (lista.next()) {
 
@@ -148,8 +148,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			Connection connection = UsuarioConnectionSql.connection();
 			String comandoSql = "Select usuario.cpf, usuario.nome, usuario.login, usuario.senha from usuario";
 
-			PreparedStatement psSql = connection.prepareStatement(comandoSql);
-			ResultSet lista = psSql.executeQuery();
+			PreparedStatement ps = connection.prepareStatement(comandoSql);
+			ResultSet lista = ps.executeQuery();
 
 			Usuario user = null;
 
@@ -179,10 +179,10 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			Connection connection = UsuarioConnectionSql.connection();
 			String comandoSql = "Delete from usuario where cpf = ?";
 
-			PreparedStatement pSql = connection.prepareStatement(comandoSql);
-			pSql.setString(1, cpf);
+			PreparedStatement ps = connection.prepareStatement(comandoSql);
+			ps.setString(1, cpf);
 
-			deletou = pSql.executeUpdate() > 0;
+			deletou = ps.executeUpdate() > 0;
 
 			connection.close();
 
