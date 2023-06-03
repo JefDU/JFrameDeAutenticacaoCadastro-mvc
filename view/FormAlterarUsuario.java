@@ -107,7 +107,7 @@ public class FormAlterarUsuario extends JFrame {
 						dispose();
 					} else {
 
-						JOptionPane.showMessageDialog(btnAlterarUsuario, "Conta Invalida");
+						JOptionPane.showMessageDialog(btnAlterarUsuario, "Tente Novamente");
 						txtnCpf.setText("");
 						txtfNome.setText("");
 						txtfNovoUsuario.setText("");

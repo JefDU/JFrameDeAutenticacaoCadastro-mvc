@@ -9,27 +9,27 @@ import controller.exception.UsuarioDaoException;
 
 public class ListaController {
 
-UsuarioDao usuarioDao;
-	
+	private UsuarioDao usuarioDao;
+
 	public ListaController() {
 		usuarioDao = new UsuarioDaoImpl();
 	}
-	
+
 	public DefaultTableModel tableUsuarios() throws RegraDeNegocioException {
 		try {
 			return usuarioDao.listarUsuarios();
-			
+
 		} catch (UsuarioDaoException e) {
 			throw new RegraDeNegocioException("Erro técnico ao listar usuarios: " + e.getMessage());
 		}
 	}
-	
+
 	private void validarAlteracao(String cpf) throws RegraDeNegocioException {
 		if (cpf.trim().equals("")) {
 			throw new RegraDeNegocioException("CPF não informado");
 		}
 	}
-	
+
 	public Boolean deletarUsuario(String cpf) throws RegraDeNegocioException {
 		try {
 			validarAlteracao(cpf);
@@ -37,6 +37,6 @@ UsuarioDao usuarioDao;
 		} catch (UsuarioDaoException e) {
 			throw new RegraDeNegocioException("Erro técnico ao deletar usuarios: " + e.getMessage());
 		}
-	
+
 	}
 }

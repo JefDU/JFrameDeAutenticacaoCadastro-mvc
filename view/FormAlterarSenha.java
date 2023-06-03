@@ -120,7 +120,7 @@ public class FormAlterarSenha extends JFrame {
 						
 					} else {
 
-						JOptionPane.showMessageDialog(btnAlterarSenha, "Conta Invalida");
+						JOptionPane.showMessageDialog(btnAlterarSenha, "Tente novamente");
 						txtnCpf.setText("");
                         txtnNomeCompleto.setText("");
                         txtfUsuario.setText("");

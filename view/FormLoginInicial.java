@@ -87,10 +87,7 @@ public class FormLoginInicial extends JFrame {
 					if (loginControl.validarLogin(txtfUsuario.getText(), String.valueOf(txtPassword.getPassword()))) {
 						new FormTableUsuario().setVisible(true);
 						dispose();
-					}  else {
-						
-						JOptionPane.showMessageDialog(btnEntrar, "Usuario ou Senha Invalidos");
-					}
+					} 
 						
 				} catch (RegraDeNegocioException e1) {
 					JOptionPane.showMessageDialog(btnEntrar, e1.getMessage());

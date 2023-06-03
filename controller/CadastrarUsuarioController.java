@@ -14,7 +14,21 @@ public class CadastrarUsuarioController {
 		usuarioDao = new UsuarioDaoImpl();
 	}
 	
-	private void validarCadastro(Usuario user) throws RegraDeNegocioException {
+	private void validarCadastro(Usuario user, String login) throws RegraDeNegocioException {
+		String userLogin = null;
+		
+		try {
+			for (Usuario usuario : usuarioDao.usuarioList()) {
+				
+				if (login.equals(usuario.getLogin())) {
+					userLogin = usuario.getLogin();
+				}
+				
+			}
+		} catch (UsuarioDaoException e) {
+			throw new RegraDeNegocioException("Falha técnica ao cadastrar: " + e.getMessage());
+		}
+		
 		if (user.getCpf().trim().equals("")) {
 			throw new RegraDeNegocioException("CPF não informado");
 		}
@@ -31,11 +45,16 @@ public class CadastrarUsuarioController {
 			throw new RegraDeNegocioException("Senha não informada");
 		}
 		
+		if (login.equals(userLogin)) {
+			throw new RegraDeNegocioException("Usuario ja existe");
+		}
+		
 	}
 	
-	public void inserirUsuario(Usuario user) throws RegraDeNegocioException {
-		validarCadastro(user);
+	public void inserirUsuario(Usuario user, String login) throws RegraDeNegocioException {
+		
 		try {
+			validarCadastro(user, login);
 			usuarioDao.salvarUsuario(user);
 			
 		} catch (UsuarioDaoException e) {

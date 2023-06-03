@@ -114,7 +114,7 @@ public class FormCadastrarUsuario extends JFrame {
 					user.setLogin(txtfUsuario.getText());
 					user.setSenha(txtnSenha.getText());
 
-					cadastroController.inserirUsuario(user);
+					cadastroController.inserirUsuario(user, txtfUsuario.getText());
 					JOptionPane.showMessageDialog(btnCadastrar, "Usuario Cadastrado Com Sucesso");
 
 					new FormLoginInicial().setVisible(true);

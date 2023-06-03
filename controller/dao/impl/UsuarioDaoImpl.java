@@ -144,14 +144,13 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 	public List<Usuario> usuarioList() throws UsuarioDaoException {
 		List<Usuario> listUsuario = new ArrayList<>();
+		Usuario user = null;
 		try {
 			Connection connection = UsuarioConnectionSql.connection();
-			String comandoSql = "Select usuario.cpf, usuario.nome, usuario.login, usuario.senha from usuario";
+			String comandoSql = "Select * from usuario";
 
 			PreparedStatement ps = connection.prepareStatement(comandoSql);
 			ResultSet lista = ps.executeQuery();
-
-			Usuario user = null;
 
 			while(lista.next()) {
 				user = new Usuario();
