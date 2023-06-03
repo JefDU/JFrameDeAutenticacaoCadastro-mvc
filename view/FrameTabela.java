@@ -20,7 +20,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 
-public class FormTableUsuario extends JFrame {
+public class FrameTabela extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private final JTable tableUsuarios = new JTable();
@@ -34,7 +34,7 @@ public class FormTableUsuario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FormTableUsuario frame = new FormTableUsuario();
+					FrameTabela frame = new FrameTabela();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +46,7 @@ public class FormTableUsuario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FormTableUsuario() {
+	public FrameTabela() {
 		listaControl = new ListaController();
 		setResizable(false);
 		setTitle("Lista de Usuarios");
@@ -128,7 +128,7 @@ public class FormTableUsuario extends JFrame {
 		lblVoltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new FormLoginInicial().setVisible(true);
+				new FrameLoginInicial().setVisible(true);
 				dispose();
 			}
 		});

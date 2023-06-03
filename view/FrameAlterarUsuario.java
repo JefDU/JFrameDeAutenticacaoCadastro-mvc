@@ -18,7 +18,7 @@ import javax.swing.border.EmptyBorder;
 import controller.AlterarUsuarioController;
 import controller.exception.RegraDeNegocioException;
 
-public class FormAlterarUsuario extends JFrame {
+public class FrameAlterarUsuario extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -34,7 +34,7 @@ public class FormAlterarUsuario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FormAlterarUsuario frame = new FormAlterarUsuario();
+					FrameAlterarUsuario frame = new FrameAlterarUsuario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +46,7 @@ public class FormAlterarUsuario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FormAlterarUsuario() {
+	public FrameAlterarUsuario() {
 		alterarUsuarioControl = new AlterarUsuarioController();
 
 		setTitle("Alterar Usuario");
@@ -103,7 +103,7 @@ public class FormAlterarUsuario extends JFrame {
 							txtfNome.getText())) {
 
 						JOptionPane.showMessageDialog(btnAlterarUsuario, "Usuario Alterado Com Sucesso");
-						new FormLoginInicial().setVisible(true);
+						new FrameLoginInicial().setVisible(true);
 						dispose();
 					} else {
 
@@ -128,7 +128,7 @@ public class FormAlterarUsuario extends JFrame {
 		lblVoltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new FormLoginInicial().setVisible(true);
+				new FrameLoginInicial().setVisible(true);
 				dispose();
 			}
 		});

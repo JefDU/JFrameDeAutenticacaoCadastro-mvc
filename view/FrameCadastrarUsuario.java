@@ -19,7 +19,7 @@ import model.Usuario;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class FormCadastrarUsuario extends JFrame {
+public class FrameCadastrarUsuario extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -37,7 +37,7 @@ public class FormCadastrarUsuario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FormCadastrarUsuario frame = new FormCadastrarUsuario();
+					FrameCadastrarUsuario frame = new FrameCadastrarUsuario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +49,7 @@ public class FormCadastrarUsuario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FormCadastrarUsuario() {
+	public FrameCadastrarUsuario() {
 		cadastroController = new CadastrarUsuarioController();
 		user = new Usuario();
 
@@ -117,7 +117,7 @@ public class FormCadastrarUsuario extends JFrame {
 					cadastroController.inserirUsuario(user, txtfUsuario.getText());
 					JOptionPane.showMessageDialog(btnCadastrar, "Usuario Cadastrado Com Sucesso");
 
-					new FormLoginInicial().setVisible(true);
+					new FrameLoginInicial().setVisible(true);
 					dispose();
 
 				} catch (RegraDeNegocioException e1) {
@@ -135,7 +135,7 @@ public class FormCadastrarUsuario extends JFrame {
 		lblVoltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new FormLoginInicial().setVisible(true);
+				new FrameLoginInicial().setVisible(true);
 				dispose();
 			}
 		});

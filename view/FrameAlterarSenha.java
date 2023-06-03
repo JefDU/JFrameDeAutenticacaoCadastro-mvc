@@ -20,7 +20,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 
-public class FormAlterarSenha extends JFrame {
+public class FrameAlterarSenha extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -37,7 +37,7 @@ public class FormAlterarSenha extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FormAlterarSenha frame = new FormAlterarSenha();
+					FrameAlterarSenha frame = new FrameAlterarSenha();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +49,7 @@ public class FormAlterarSenha extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FormAlterarSenha() {
+	public FrameAlterarSenha() {
 		alterarSenhaControl = new AlterarSenhaController();
 		setTitle("Alterar Senha");
 		setResizable(false);
@@ -115,7 +115,7 @@ public class FormAlterarSenha extends JFrame {
 							txtnNomeCompleto.getText(), txtfUsuario.getText())) {
 
 						JOptionPane.showMessageDialog(btnAlterarSenha, "Senha Alterada Com Sucesso");
-						new FormLoginInicial().setVisible(true);
+						new FrameLoginInicial().setVisible(true);
 						dispose();
 						
 					} else {
@@ -142,7 +142,7 @@ public class FormAlterarSenha extends JFrame {
 		lblVoltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new FormLoginInicial().setVisible(true);
+				new FrameLoginInicial().setVisible(true);
 				dispose();
 			}
 		});

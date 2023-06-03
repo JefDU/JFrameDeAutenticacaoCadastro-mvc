@@ -20,7 +20,7 @@ import javax.swing.border.EmptyBorder;
 import controller.LoginUsuarioController;
 import controller.exception.RegraDeNegocioException;
 
-public class FormLoginInicial extends JFrame {
+public class FrameLoginInicial extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -32,7 +32,7 @@ public class FormLoginInicial extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FormLoginInicial frame = new FormLoginInicial();
+					FrameLoginInicial frame = new FrameLoginInicial();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,7 @@ public class FormLoginInicial extends JFrame {
 		});
 	}
 
-	public FormLoginInicial() {
+	public FrameLoginInicial() {
 
 		loginControl = new LoginUsuarioController();
 
@@ -85,7 +85,7 @@ public class FormLoginInicial extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					if (loginControl.validarLogin(txtfUsuario.getText(), String.valueOf(txtPassword.getPassword()))) {
-						new FormTableUsuario().setVisible(true);
+						new FrameTabela().setVisible(true);
 						dispose();
 					} 
 						
@@ -105,7 +105,7 @@ public class FormLoginInicial extends JFrame {
 		JButton btnCadastrarLogin = new JButton("Cadastrar Login");
 		btnCadastrarLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new FormCadastrarUsuario().setVisible(true);
+				new FrameCadastrarUsuario().setVisible(true);
 				dispose();
 
 			}
@@ -121,7 +121,7 @@ public class FormLoginInicial extends JFrame {
 		lblEsqueceuSenha.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new FormAlterarSenha().setVisible(true);
+				new FrameAlterarSenha().setVisible(true);
 				dispose();
 
 			}
@@ -135,7 +135,7 @@ public class FormLoginInicial extends JFrame {
 		lblEsqueceuUsuario.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new FormAlterarUsuario().setVisible(true);
+				new FrameAlterarUsuario().setVisible(true);
 				dispose();
 			}
 		});
