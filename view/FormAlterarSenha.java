@@ -117,6 +117,7 @@ public class FormAlterarSenha extends JFrame {
 						JOptionPane.showMessageDialog(btnAlterarSenha, "Senha Alterada Com Sucesso");
 						new FormLoginInicial().setVisible(true);
 						dispose();
+						
 					} else {
 
 						JOptionPane.showMessageDialog(btnAlterarSenha, "Conta Invalida");
