@@ -26,30 +26,30 @@ public class LoginController {
 	}
 	
 	private void buscarCadastro(String login, String senha) throws RegraDeNegocioException {
-		String userLogin = null;
-		String userSenha = null;
+		String usuarioLogin = null;
+		String usuarioSenha = null;
 		
 		try {
 			for (Usuario usuario : usuarioDao.usuarioList()) {
 				
 				if (login.equals(usuario.getLogin())) {
-					userLogin = usuario.getLogin();
+					usuarioLogin = usuario.getLogin();
 				}
 				
 				if (senha.equals(usuario.getSenha())) {
-					userSenha = usuario.getSenha();
+					usuarioSenha = usuario.getSenha();
 				}
 			}
 			
-			if (!login.equals(userLogin) && !senha.equals(userSenha)) {
+			if (!login.equals(usuarioLogin) && !senha.equals(usuarioSenha)) {
 				throw new RegraDeNegocioException("Usuario e senha invalidos");
 			}
 			
-			else if (!login.equals(userLogin)) {
+			else if (!login.equals(usuarioLogin)) {
 				throw new RegraDeNegocioException("Usuario invalido");
 			}
 			
-			else if (!senha.equals(userSenha)) {
+			else if (!senha.equals(usuarioSenha)) {
 				
 				throw new RegraDeNegocioException("Senha invalida");
 			}

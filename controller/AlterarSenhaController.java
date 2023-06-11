@@ -35,34 +35,34 @@ public class AlterarSenhaController {
 	}
 	
 	private void buscarCadastro(String cpf, String nome, String login) throws RegraDeNegocioException {
-		String userCpf = null;
-		String userNome = null;
-		String userLogin = null;
+		String usuarioCpf = null;
+		String usuarioNome = null;
+		String usuarioLogin = null;
 		
 		try {
 			for (Usuario usuario : usuarioDao.usuarioList()) {
 				if (cpf.equals(usuario.getCpf())) {
-					userCpf = usuario.getCpf();
+					usuarioCpf = usuario.getCpf();
 				}
 				
 				if (nome.equals(usuario.getNome())) {
-					userNome = usuario.getNome();
+					usuarioNome = usuario.getNome();
 				}
 				
 				if (login.equals(usuario.getLogin())) {
-					userLogin = usuario.getLogin();
+					usuarioLogin = usuario.getLogin();
 				}
 			}
 			
-			if (!cpf.equals(userCpf)) { 
+			if (!cpf.equals(usuarioCpf)) { 
 				throw new RegraDeNegocioException("CPF invalido");
 			}
 			
-			else if (!nome.equals(userNome)) {
+			else if (!nome.equals(usuarioNome)) {
 				throw new RegraDeNegocioException("Nome invalido");
 			}
 			
-			else if (!login.equals(userLogin)) {
+			else if (!login.equals(usuarioLogin)) {
 				throw new RegraDeNegocioException("Login invalido");
 			}
 			

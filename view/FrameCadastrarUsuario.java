@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,10 +16,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.CadastrarUsuarioController;
+import controller.RelatorioController;
 import controller.exception.RegraDeNegocioException;
 import model.Usuario;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class FrameCadastrarUsuario extends JFrame {
 
@@ -28,6 +29,7 @@ public class FrameCadastrarUsuario extends JFrame {
 	private JTextField txtfUsuario;
 	private JTextField txtnSenha;
 	private CadastrarUsuarioController cadastroController;
+	private RelatorioController relatorioControl;
 	private Usuario user;
 
 	/**
@@ -51,6 +53,7 @@ public class FrameCadastrarUsuario extends JFrame {
 	 */
 	public FrameCadastrarUsuario() {
 		cadastroController = new CadastrarUsuarioController();
+		relatorioControl = new RelatorioController();
 		user = new Usuario();
 
 		setResizable(false);
@@ -116,6 +119,7 @@ public class FrameCadastrarUsuario extends JFrame {
 
 					cadastroController.inserirUsuario(user, txtfUsuario.getText());
 					JOptionPane.showMessageDialog(btnCadastrar, "Usuario Cadastrado Com Sucesso");
+					relatorioControl.salvarRelatorio();
 
 					new FrameLoginInicial().setVisible(true);
 					dispose();

@@ -2,6 +2,10 @@ package view;
 
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,17 +18,15 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.ListaController;
+import controller.RelatorioController;
 import controller.exception.RegraDeNegocioException;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.ActionEvent;
 
 public class FrameTabela extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private final JTable tableUsuarios = new JTable();
 	private ListaController listaControl;
+    private RelatorioController relatorioControl;
 	private JTextField txtnCpf;
 
 	/**
@@ -48,6 +50,7 @@ public class FrameTabela extends JFrame {
 	 */
 	public FrameTabela() {
 		listaControl = new ListaController();
+		relatorioControl = new RelatorioController();
 		setResizable(false);
 		setTitle("Lista de Usuarios");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,7 +72,7 @@ public class FrameTabela extends JFrame {
 		
 		try {
 			tableUsuarios.setModel(listaControl.tableUsuarios());
-			
+		
 			JLabel lblCPF = new JLabel("CPF");
 			lblCPF.setEnabled(false);
 			lblCPF.setBounds(70, 83, 46, 14);
@@ -101,6 +104,7 @@ public class FrameTabela extends JFrame {
 						if(listaControl.deletarUsuario(txtnCpf.getText())) {
 							
 							JOptionPane.showMessageDialog(btnDeletar, "Usuario Deletado Com Sucesso");
+							relatorioControl.salvarRelatorio();
 							txtnCpf.setText("");
 							
 							tableUsuarios.setModel(listaControl.tableUsuarios());

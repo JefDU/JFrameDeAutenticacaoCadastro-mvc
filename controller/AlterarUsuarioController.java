@@ -30,30 +30,30 @@ public class AlterarUsuarioController {
 	}
 	
 	private void buscarCadastro(String cpf, String nome) throws RegraDeNegocioException {
-		String userCpf = null;
-		String userNome = null;
+		String usuarioCpf = null;
+		String usuarioNome = null;
 		
 		try {
 			for (Usuario usuario : usuarioDao.usuarioList()) {
 				if (cpf.equals(usuario.getCpf())) {
-					userCpf = usuario.getCpf();
+					usuarioCpf = usuario.getCpf();
 				}
 				
 				if (nome.equals(usuario.getNome())) {
-					userNome = usuario.getNome();
+					usuarioNome = usuario.getNome();
 				}
 			}
 			
-			if (!cpf.equals(userCpf) && !nome.equals(userNome)) {				
+			if (!cpf.equals(usuarioCpf) && !nome.equals(usuarioNome)) {				
 				throw new RegraDeNegocioException("CPF e nome invalidos");
 
 			}
 			
-			else if (!cpf.equals(userCpf)) { 
+			else if (!cpf.equals(usuarioCpf)) { 
 				throw new RegraDeNegocioException("CPF invalido");
 			}
 			
-			else if (!nome.equals(userNome)) {
+			else if (!nome.equals(usuarioNome)) {
 				throw new RegraDeNegocioException("Nome invalido");
 			}
 			

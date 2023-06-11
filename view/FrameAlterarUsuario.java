@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.AlterarUsuarioController;
+import controller.RelatorioController;
 import controller.exception.RegraDeNegocioException;
 
 public class FrameAlterarUsuario extends JFrame {
@@ -26,6 +27,7 @@ public class FrameAlterarUsuario extends JFrame {
 	private JTextField txtfNome;
 	private JTextField txtfNovoUsuario;
 	private AlterarUsuarioController alterarUsuarioControl;
+	private RelatorioController relatorioControl;
 
 	/**
 	 * Launch the application.
@@ -48,6 +50,7 @@ public class FrameAlterarUsuario extends JFrame {
 	 */
 	public FrameAlterarUsuario() {
 		alterarUsuarioControl = new AlterarUsuarioController();
+		relatorioControl = new RelatorioController();
 
 		setTitle("Alterar Usuario");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -103,6 +106,7 @@ public class FrameAlterarUsuario extends JFrame {
 							txtfNome.getText())) {
 
 						JOptionPane.showMessageDialog(btnAlterarUsuario, "Usuario Alterado Com Sucesso");
+						relatorioControl.salvarRelatorio();
 						new FrameLoginInicial().setVisible(true);
 						dispose();
 					} else {

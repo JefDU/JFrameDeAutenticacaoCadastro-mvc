@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controller.AlterarSenhaController;
+import controller.RelatorioController;
 import controller.exception.RegraDeNegocioException;
 
 import javax.swing.JLabel;
@@ -29,6 +30,7 @@ public class FrameAlterarSenha extends JFrame {
 	private JTextField txtnNovaSenha;
 	private JTextField txtfUsuario;
 	private AlterarSenhaController alterarSenhaControl;
+	private RelatorioController relatorioControl;
 
 	/**
 	 * Launch the application.
@@ -51,6 +53,8 @@ public class FrameAlterarSenha extends JFrame {
 	 */
 	public FrameAlterarSenha() {
 		alterarSenhaControl = new AlterarSenhaController();
+		relatorioControl = new RelatorioController();
+		
 		setTitle("Alterar Senha");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -115,6 +119,8 @@ public class FrameAlterarSenha extends JFrame {
 							txtnNomeCompleto.getText(), txtfUsuario.getText())) {
 
 						JOptionPane.showMessageDialog(btnAlterarSenha, "Senha Alterada Com Sucesso");
+						relatorioControl.salvarRelatorio();
+						
 						new FrameLoginInicial().setVisible(true);
 						dispose();
 						
