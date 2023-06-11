@@ -1,8 +1,8 @@
-CPF:11492711918
-Nome:Jeferson Duarte
-Login:jefinVrau
-Senha: 0603
+CPF: null
+Nome: null
+Login: null
+Senha: null
 -------------------------------- 
 
 ---Quantide de Cadastros---
-Quantidade De Usuarios = 1 Usuarios cadastrados
+Quantidade De Usuarios =  Usuarios cadastrados
