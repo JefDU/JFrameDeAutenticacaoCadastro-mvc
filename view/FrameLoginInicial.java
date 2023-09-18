@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.LoginController;
-import controller.exception.RegraDeNegocioException;
+import controller.exception.UsuarioException;
 
 public class FrameLoginInicial extends JFrame {
 
@@ -89,7 +89,7 @@ public class FrameLoginInicial extends JFrame {
 						dispose();
 					} 
 						
-				} catch (RegraDeNegocioException e1) {
+				} catch (UsuarioException e1) {
 					JOptionPane.showMessageDialog(btnEntrar, e1.getMessage());
 					
 				}

@@ -4,7 +4,7 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.dao.UsuarioDao;
 import controller.dao.impl.UsuarioDaoImpl;
-import controller.exception.RegraDeNegocioException;
+import controller.exception.UsuarioException;
 import controller.exception.UsuarioDaoException;
 
 public class ListaController {
@@ -15,27 +15,27 @@ public class ListaController {
 		usuarioDao = new UsuarioDaoImpl();
 	}
 
-	public DefaultTableModel tableUsuarios() throws RegraDeNegocioException {
+	public DefaultTableModel tableUsuarios() throws UsuarioException {
 		try {
 			return usuarioDao.listarUsuarios();
 
 		} catch (UsuarioDaoException e) {
-			throw new RegraDeNegocioException("Erro técnico ao listar usuarios: " + e.getMessage());
+			throw new UsuarioException("Erro técnico ao listar usuarios: " + e.getMessage());
 		}
 	}
 
-	private void validarAlteracao(String cpf) throws RegraDeNegocioException {
+	private void validarAlteracao(String cpf) throws UsuarioException {
 		if (cpf.trim().equals("")) {
-			throw new RegraDeNegocioException("CPF não informado");
+			throw new UsuarioException("CPF não informado");
 		}
 	}
 
-	public Boolean deletarUsuario(String cpf) throws RegraDeNegocioException {
+	public Boolean deletarUsuario(String cpf) throws UsuarioException {
 		try {
 			validarAlteracao(cpf);
 			return usuarioDao.excluir(cpf);
 		} catch (UsuarioDaoException e) {
-			throw new RegraDeNegocioException("Erro técnico ao deletar usuarios: " + e.getMessage());
+			throw new UsuarioException("Erro técnico ao deletar usuarios: " + e.getMessage());
 		}
 
 	}

@@ -17,7 +17,7 @@ import javax.swing.border.EmptyBorder;
 
 import controller.AlterarUsuarioController;
 import controller.RelatorioController;
-import controller.exception.RegraDeNegocioException;
+import controller.exception.UsuarioException;
 
 public class FrameAlterarUsuario extends JFrame {
 
@@ -119,7 +119,7 @@ public class FrameAlterarUsuario extends JFrame {
 
 					}
 
-				} catch (RegraDeNegocioException e1) {
+				} catch (UsuarioException e1) {
 					JOptionPane.showMessageDialog(btnAlterarUsuario, e1.getMessage());
 				}
 			}

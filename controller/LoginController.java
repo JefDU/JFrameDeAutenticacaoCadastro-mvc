@@ -2,7 +2,7 @@ package controller;
 
 import controller.dao.UsuarioDao;
 import controller.dao.impl.UsuarioDaoImpl;
-import controller.exception.RegraDeNegocioException;
+import controller.exception.UsuarioException;
 import controller.exception.UsuarioDaoException;
 import model.Usuario;
 
@@ -14,18 +14,18 @@ public class LoginController {
 		usuarioDao = new UsuarioDaoImpl();
 	}
 
-	private void validarAcessoUsuario(String login, String senha) throws RegraDeNegocioException {
+	private void validarAcessoUsuario(String login, String senha) throws UsuarioException {
 		if (login.trim().equals("")) {
-			throw new RegraDeNegocioException("Usuario não informado");
+			throw new UsuarioException("Usuario não informado");
 		}
 
 		if (senha.trim().equals("")) {
-			throw new RegraDeNegocioException("Senha não informada");
+			throw new UsuarioException("Senha não informada");
 		}
 
 	}
 	
-	private void buscarCadastro(String login, String senha) throws RegraDeNegocioException {
+	private void buscarCadastro(String login, String senha) throws UsuarioException {
 		String usuarioLogin = null;
 		String usuarioSenha = null;
 		
@@ -42,24 +42,24 @@ public class LoginController {
 			}
 			
 			if (!login.equals(usuarioLogin) && !senha.equals(usuarioSenha)) {
-				throw new RegraDeNegocioException("Usuario e senha invalidos");
+				throw new UsuarioException("Usuario e senha invalidos");
 			}
 			
 			else if (!login.equals(usuarioLogin)) {
-				throw new RegraDeNegocioException("Usuario invalido");
+				throw new UsuarioException("Usuario invalido");
 			}
 			
 			else if (!senha.equals(usuarioSenha)) {
 				
-				throw new RegraDeNegocioException("Senha invalida");
+				throw new UsuarioException("Senha invalida");
 			}
 			
 		} catch (UsuarioDaoException e) {
-			throw new RegraDeNegocioException("Erro técnico ao buscar cadastro: " + e.getMessage());
+			throw new UsuarioException("Erro técnico ao buscar cadastro: " + e.getMessage());
 		}
 	}
 	
-	public Boolean validarLogin(String login, String senha) throws RegraDeNegocioException {
+	public Boolean validarLogin(String login, String senha) throws UsuarioException {
 
 		try {
 		     validarAcessoUsuario(login, senha);	
@@ -67,7 +67,7 @@ public class LoginController {
 			return usuarioDao.validarAcesso(login, senha);
 
 		} catch (UsuarioDaoException e) {
-			throw new RegraDeNegocioException("Erro técnico ao acessar login: " + e.getMessage());
+			throw new UsuarioException("Erro técnico ao acessar login: " + e.getMessage());
 		}
 
 	}

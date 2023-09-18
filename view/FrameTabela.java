@@ -19,7 +19,7 @@ import javax.swing.border.EmptyBorder;
 
 import controller.ListaController;
 import controller.RelatorioController;
-import controller.exception.RegraDeNegocioException;
+import controller.exception.UsuarioException;
 
 public class FrameTabela extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -115,7 +115,7 @@ public class FrameTabela extends JFrame {
 							txtnCpf.setText("");
 						}
 						
-					} catch (RegraDeNegocioException e1) {
+					} catch (UsuarioException e1) {
 						JOptionPane.showMessageDialog(btnDeletar, e1.getMessage());
 						
 					}
@@ -123,7 +123,7 @@ public class FrameTabela extends JFrame {
 			});
 			btnDeletar.setBounds(235, 39, 89, 23);
 			contentPane.add(btnDeletar);
-		} catch (RegraDeNegocioException e) {
+		} catch (UsuarioException e) {
 			JOptionPane.showMessageDialog(scrollBar, e.getMessage());
 		}
 		

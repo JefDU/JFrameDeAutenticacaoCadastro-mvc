@@ -2,7 +2,7 @@ package controller;
 
 import controller.dao.UsuarioDao;
 import controller.dao.impl.UsuarioDaoImpl;
-import controller.exception.RegraDeNegocioException;
+import controller.exception.UsuarioException;
 import controller.exception.UsuarioDaoException;
 import model.Usuario;
 
@@ -14,27 +14,27 @@ public class AlterarSenhaController {
 		usuarioDao = new UsuarioDaoImpl();
 	}
 
-	private void validarAlteracao(String senhaNova, String cpf, String nome, String login) throws RegraDeNegocioException, UsuarioDaoException {
+	private void validarAlteracao(String senhaNova, String cpf, String nome, String login) throws UsuarioException, UsuarioDaoException {
 	
 		if (cpf.trim().equals("")) {
-			throw new RegraDeNegocioException("CPF não informado");
+			throw new UsuarioException("CPF não informado");
 		}
 		
 		if (nome.trim().equals("")) {
-			throw new RegraDeNegocioException("Nome não informado");
+			throw new UsuarioException("Nome não informado");
 		}
 		
 		if (login.trim().equals("")) {
-			throw new RegraDeNegocioException("Usuario não informado");
+			throw new UsuarioException("Usuario não informado");
 		}
 		
 		if (senhaNova.trim().equals("")) {
-			throw new RegraDeNegocioException("Nova senha não informado");
+			throw new UsuarioException("Nova senha não informado");
 		}
 		
 	}
 	
-	private void buscarCadastro(String cpf, String nome, String login) throws RegraDeNegocioException {
+	private void buscarCadastro(String cpf, String nome, String login) throws UsuarioException {
 		String usuarioCpf = null;
 		String usuarioNome = null;
 		String usuarioLogin = null;
@@ -55,23 +55,23 @@ public class AlterarSenhaController {
 			}
 			
 			if (!cpf.equals(usuarioCpf)) { 
-				throw new RegraDeNegocioException("CPF invalido");
+				throw new UsuarioException("CPF invalido");
 			}
 			
 			else if (!nome.equals(usuarioNome)) {
-				throw new RegraDeNegocioException("Nome invalido");
+				throw new UsuarioException("Nome invalido");
 			}
 			
 			else if (!login.equals(usuarioLogin)) {
-				throw new RegraDeNegocioException("Login invalido");
+				throw new UsuarioException("Login invalido");
 			}
 			
 		} catch (UsuarioDaoException e) {
-			throw new RegraDeNegocioException(e.getMessage());
+			throw new UsuarioException(e.getMessage());
 		}
 	}
 	
-	public Boolean alterarSenha(String senhaNova, String cpf, String nome, String login) throws RegraDeNegocioException {
+	public Boolean alterarSenha(String senhaNova, String cpf, String nome, String login) throws UsuarioException {
 		
 		try {
 			validarAlteracao(senhaNova, cpf, nome, login);
@@ -79,7 +79,7 @@ public class AlterarSenhaController {
 			return usuarioDao.editarSenha(senhaNova, cpf, nome, login);
 			
 		} catch (UsuarioDaoException e) {
-			throw new RegraDeNegocioException("Erro técnico ao alterar usuario: " + e.getMessage());
+			throw new UsuarioException("Erro técnico ao alterar usuario: " + e.getMessage());
 		}
 	}
 }

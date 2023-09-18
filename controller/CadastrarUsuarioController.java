@@ -2,7 +2,7 @@ package controller;
 
 import controller.dao.UsuarioDao;
 import controller.dao.impl.UsuarioDaoImpl;
-import controller.exception.RegraDeNegocioException;
+import controller.exception.UsuarioException;
 import controller.exception.UsuarioDaoException;
 import model.Usuario;
 
@@ -14,7 +14,7 @@ public class CadastrarUsuarioController {
 		usuarioDao = new UsuarioDaoImpl();
 	}
 	
-	private void validarCadastro(Usuario user, String login) throws RegraDeNegocioException {
+	private void validarCadastro(Usuario user, String login) throws UsuarioException {
 		String userLogin = null;
 		
 		try {
@@ -26,32 +26,32 @@ public class CadastrarUsuarioController {
 				
 			}
 		} catch (UsuarioDaoException e) {
-			throw new RegraDeNegocioException(e.getMessage());
+			throw new UsuarioException(e.getMessage());
 		}
 		
 		if (user.getCpf().trim().equals("")) {
-			throw new RegraDeNegocioException("CPF não informado");
+			throw new UsuarioException("CPF não informado");
 		}
 		
 		if (user.getNome().trim().equals("")) {
-			throw new RegraDeNegocioException("Nome não informado");
+			throw new UsuarioException("Nome não informado");
 		}
 		
 		if (user.getLogin().trim().equals("")) {
-			throw new RegraDeNegocioException("Usuario não informado");
+			throw new UsuarioException("Usuario não informado");
 		}
 		
 		if (user.getSenha().trim().equals("")) {
-			throw new RegraDeNegocioException("Senha não informada");
+			throw new UsuarioException("Senha não informada");
 		}
 		
 		if (login.equals(userLogin)) {
-			throw new RegraDeNegocioException("Usuario ja existe");
+			throw new UsuarioException("Usuario ja existe");
 		}
 		
 	}
 	
-	public void inserirUsuario(Usuario user, String login) throws RegraDeNegocioException {
+	public void inserirUsuario(Usuario user, String login) throws UsuarioException {
 		
 		try {
 			validarCadastro(user, login);
@@ -59,7 +59,7 @@ public class CadastrarUsuarioController {
 			
 		} catch (UsuarioDaoException e) {
 			
-			throw new RegraDeNegocioException("Falha técnica ao inserir usuario " + e.getMessage());
+			throw new UsuarioException("Falha técnica ao inserir usuario " + e.getMessage());
 		}
 		
 		

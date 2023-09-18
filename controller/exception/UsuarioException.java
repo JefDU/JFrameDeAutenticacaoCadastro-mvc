@@ -1,11 +1,11 @@
 package controller.exception;
 
-public class RegraDeNegocioException extends Exception {
+public class UsuarioException extends Exception {
 	private static final long serialVersionUID = 1L;
 	
 	private String message;
 	
-	public RegraDeNegocioException(String message) {
+	public UsuarioException(String message) {
 		this.message = message;
 	}
 

@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 
 import controller.dao.UsuarioDao;
 import controller.dao.impl.UsuarioDaoImpl;
-import controller.exception.RegraDeNegocioException;
+import controller.exception.UsuarioException;
 import controller.exception.UsuarioDaoException;
 import model.Usuario;
 
@@ -19,7 +19,7 @@ public class RelatorioController {
 		this.diretorio = "C:/Projetos Developer/ProjetosPortifolio/projetoJFrameDeLoginCadastroV1_MVC/Relatorio-de-usuarios.txt";
 	}
 
-	public void salvarRelatorio() throws RegraDeNegocioException {
+	public void salvarRelatorio() throws UsuarioException {
 		try {
 			PrintWriter pw = new PrintWriter(diretorio);
 			for (Usuario user : usuarioDao.usuarioList()) {
@@ -37,7 +37,7 @@ public class RelatorioController {
 			pw.close();
 
 		} catch (FileNotFoundException | UsuarioDaoException e) {
-			throw new RegraDeNegocioException("Erro técnico ao salvar o relatório: " + e.getMessage());
+			throw new UsuarioException("Erro técnico ao salvar o relatório: " + e.getMessage());
 		}
 	}
 }

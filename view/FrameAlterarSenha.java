@@ -8,7 +8,7 @@ import javax.swing.border.EmptyBorder;
 
 import controller.AlterarSenhaController;
 import controller.RelatorioController;
-import controller.exception.RegraDeNegocioException;
+import controller.exception.UsuarioException;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -135,7 +135,7 @@ public class FrameAlterarSenha extends JFrame {
 
 					}
 
-				} catch (RegraDeNegocioException e1) {
+				} catch (UsuarioException e1) {
 					JOptionPane.showMessageDialog(btnAlterarSenha, e1.getMessage());
 				}
 			}

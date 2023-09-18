@@ -17,7 +17,7 @@ import javax.swing.border.EmptyBorder;
 
 import controller.CadastrarUsuarioController;
 import controller.RelatorioController;
-import controller.exception.RegraDeNegocioException;
+import controller.exception.UsuarioException;
 import model.Usuario;
 
 public class FrameCadastrarUsuario extends JFrame {
@@ -124,7 +124,7 @@ public class FrameCadastrarUsuario extends JFrame {
 					new FrameLoginInicial().setVisible(true);
 					dispose();
 
-				} catch (RegraDeNegocioException e1) {
+				} catch (UsuarioException e1) {
 
 					JOptionPane.showMessageDialog(btnCadastrar, e1.getMessage());
 				}
